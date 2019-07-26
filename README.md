@@ -1,2 +1,2 @@
 # lgtestios
-Test app for Landmark Group
+Assignment app for Landmark Group
