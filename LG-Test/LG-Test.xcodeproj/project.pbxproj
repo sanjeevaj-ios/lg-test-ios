@@ -27,8 +27,12 @@
 		E22CECEB22EB43E6004AACF3 /* ConversionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22CECE922EB43E6004AACF3 /* ConversionManager.swift */; };
 		E22CECF622EB4F61004AACF3 /* ProductsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22CECF522EB4F61004AACF3 /* ProductsData.swift */; };
 		E22CECF722EB4F66004AACF3 /* ProductsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22CECF522EB4F61004AACF3 /* ProductsData.swift */; };
-		E22CECF922EB6509004AACF3 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22CECF822EB6509004AACF3 /* CollectionViewCell.swift */; };
-		E22CECFA22EB6509004AACF3 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22CECF822EB6509004AACF3 /* CollectionViewCell.swift */; };
+		E22CECF922EB6509004AACF3 /* ProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22CECF822EB6509004AACF3 /* ProductCollectionViewCell.swift */; };
+		E22CECFA22EB6509004AACF3 /* ProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22CECF822EB6509004AACF3 /* ProductCollectionViewCell.swift */; };
+		E22CECFC22EB77D5004AACF3 /* DateUtilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22CECFB22EB77D5004AACF3 /* DateUtilityManager.swift */; };
+		E22CECFD22EB77D5004AACF3 /* DateUtilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22CECFB22EB77D5004AACF3 /* DateUtilityManager.swift */; };
+		E22CECFF22EB8318004AACF3 /* ButtonModification.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22CECFE22EB8318004AACF3 /* ButtonModification.swift */; };
+		E22CED0022EB8318004AACF3 /* ButtonModification.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22CECFE22EB8318004AACF3 /* ButtonModification.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,7 +63,9 @@
 		E22CECE622EB43D9004AACF3 /* ProductsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsManager.swift; sourceTree = "<group>"; };
 		E22CECE922EB43E6004AACF3 /* ConversionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversionManager.swift; sourceTree = "<group>"; };
 		E22CECF522EB4F61004AACF3 /* ProductsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsData.swift; sourceTree = "<group>"; };
-		E22CECF822EB6509004AACF3 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		E22CECF822EB6509004AACF3 /* ProductCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewCell.swift; sourceTree = "<group>"; };
+		E22CECFB22EB77D5004AACF3 /* DateUtilityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtilityManager.swift; sourceTree = "<group>"; };
+		E22CECFE22EB8318004AACF3 /* ButtonModification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonModification.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +144,8 @@
 				E22CECE322EB43CB004AACF3 /* DataManager.swift */,
 				E22CECE622EB43D9004AACF3 /* ProductsManager.swift */,
 				E22CECE922EB43E6004AACF3 /* ConversionManager.swift */,
+				E22CECFB22EB77D5004AACF3 /* DateUtilityManager.swift */,
+				E22CECFE22EB8318004AACF3 /* ButtonModification.swift */,
 			);
 			path = "Manager Classes";
 			sourceTree = "<group>";
@@ -163,7 +171,7 @@
 		E22CECF222EB4425004AACF3 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				E22CECF822EB6509004AACF3 /* CollectionViewCell.swift */,
+				E22CECF822EB6509004AACF3 /* ProductCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -282,11 +290,13 @@
 				E22CECBC22EB2BC6004AACF3 /* ViewController.swift in Sources */,
 				E22CECE422EB43CB004AACF3 /* DataManager.swift in Sources */,
 				E22CECEA22EB43E6004AACF3 /* ConversionManager.swift in Sources */,
+				E22CECFF22EB8318004AACF3 /* ButtonModification.swift in Sources */,
 				E22CECDE22EB43A0004AACF3 /* Conversion.swift in Sources */,
 				E22CECBA22EB2BC6004AACF3 /* AppDelegate.swift in Sources */,
 				E22CECDB22EB4392004AACF3 /* Product.swift in Sources */,
 				E22CECE122EB43B2004AACF3 /* ProductViewModel.swift in Sources */,
-				E22CECF922EB6509004AACF3 /* CollectionViewCell.swift in Sources */,
+				E22CECF922EB6509004AACF3 /* ProductCollectionViewCell.swift in Sources */,
+				E22CECFC22EB77D5004AACF3 /* DateUtilityManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,12 +304,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E22CECFA22EB6509004AACF3 /* CollectionViewCell.swift in Sources */,
+				E22CECFA22EB6509004AACF3 /* ProductCollectionViewCell.swift in Sources */,
 				E22CECDF22EB43A0004AACF3 /* Conversion.swift in Sources */,
 				E22CECF722EB4F66004AACF3 /* ProductsData.swift in Sources */,
 				E22CECE822EB43D9004AACF3 /* ProductsManager.swift in Sources */,
 				E22CECE522EB43CB004AACF3 /* DataManager.swift in Sources */,
 				E22CECCF22EB2BC6004AACF3 /* LG_TestTests.swift in Sources */,
+				E22CED0022EB8318004AACF3 /* ButtonModification.swift in Sources */,
+				E22CECFD22EB77D5004AACF3 /* DateUtilityManager.swift in Sources */,
 				E22CECEB22EB43E6004AACF3 /* ConversionManager.swift in Sources */,
 				E22CECE222EB43B2004AACF3 /* ProductViewModel.swift in Sources */,
 				E22CECDC22EB4392004AACF3 /* Product.swift in Sources */,

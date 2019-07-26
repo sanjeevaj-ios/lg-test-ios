@@ -64,14 +64,14 @@ extension ProductsManager {
         let name = product.name
         let displayPrice = ConversionManager.shared.convertRateFrom(from: product.currency, rate: product.price, to: conversion)
 
-        let productViewModel = ProductViewModel.init(productTitle: self.productTitle, name: name, displayPrice: displayPrice)
+        let productViewModel = ProductViewModel.init(productTitle: self.productTitle, name: name, displayPrice: displayPrice, imageURL: product.url)
 
         return productViewModel
     }
 
-    func getProductImageFor(product: Product, imgCompletion:@escaping (UIImage?, Error?) -> Void) {
+    func getProductImageFor(product: ProductViewModel, imgCompletion:@escaping (UIImage?, Error?) -> Void) {
 
-        DataManager().getData(url: product.url) { (data, error) in
+        DataManager().getData(url: product.imageURL) { (data, error) in
             if (error != nil) {
                 imgCompletion(nil, error)
             } else {

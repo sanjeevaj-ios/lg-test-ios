@@ -12,4 +12,5 @@ struct ProductViewModel {
     var productTitle: String
     var name: String
     var displayPrice: String
+    var imageURL: String
 }
