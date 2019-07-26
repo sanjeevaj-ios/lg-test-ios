@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+struct Conversion: Decodable {
+    var from: String
+    var to: String
+    var rate: String
+}

@@ -6,3 +6,10 @@
 //
 
 import Foundation
+
+struct Product: Decodable {
+    var url: String
+    var name: String
+    var price: String
+    var currency: String
+}

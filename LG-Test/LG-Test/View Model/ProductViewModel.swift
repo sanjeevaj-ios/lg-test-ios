@@ -6,3 +6,10 @@
 //
 
 import Foundation
+import UIKit
+
+struct ProductViewModel {
+    var productTitle: String
+    var name: String
+    var displayPrice: String
+}
