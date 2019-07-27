@@ -9,11 +9,8 @@ import Foundation
 
 class DateUtilityManager {
 
-    let millisecondInterval = 1595275200000.0
-
-    func getTheRemainingTime() -> String {
-        let remainingDate = Date(timeIntervalSince1970: millisecondInterval/1000.0)
-        let calendarDays = Calendar.current.dateComponents([.hour, .minute, .second], from: Date(), to: remainingDate)
+    func getTheRemainingTime(fromDate: Date, toDate: Date) -> String {
+        let calendarDays = Calendar.current.dateComponents([.hour, .minute, .second], from: fromDate, to: toDate)
         return "\(calendarDays.hour ?? 0):\(calendarDays.minute ?? 0):\(calendarDays.second ?? 0)"
     }
 }

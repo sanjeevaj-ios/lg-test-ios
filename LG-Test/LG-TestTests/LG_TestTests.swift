@@ -10,24 +10,61 @@ import XCTest
 
 class LG_TestTests: XCTestCase {
 
-    override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    func  testConversionRate() {
+        let fromCurrency = "AED"
+        let toCurrency = "INR"
+        let price = "2.0"
+        let expectedAnswer = "34.00"
+        let conversionObj = Conversion.init(from: "AED", to: "INR", rate: "17.1")
+        ConversionManager.shared.conversionArray = [conversionObj]
+
+        let testAnswer = ConversionManager.shared.convertRateFrom(from: fromCurrency, rate: price, to: toCurrency)
+        XCTAssertEqual(testAnswer, expectedAnswer)
     }
 
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    func testDefaultProductViewModel() {
+        let testProduct = Product.init(url: "http://abc.com", name: "Test product", price: "34.00", currency: "INR")
+        ProductsManager.shared.products = []
+        ProductsManager.shared.products.append(testProduct)
+        let expectedPrice = "AED 2.00"
+        let conversionObj = Conversion.init(from: "AED", to: "INR", rate: "17.0")
+        ConversionManager.shared.conversionArray = [conversionObj]
+
+        let defaultViewModel = ProductsManager.shared.getDefaultProductsViewModel()
+        XCTAssertEqual(defaultViewModel[0].displayPrice, expectedPrice)
     }
 
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testParsingProductData() {
+        let testProdTitle = "Test title of product"
+        let testProdData = ProductData.init(products: [], conversion: [], title: testProdTitle)
+        ProductsManager.shared.parseProductsData(productData: testProdData)
+        let prodManagerTitle = ProductsManager.shared.productTitle
+        XCTAssertEqual(prodManagerTitle, testProdTitle)
     }
 
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    func testTheRemainingTime() {
+        var dateComponents1 = DateComponents()
+        dateComponents1.year = 2019
+        dateComponents1.month = 7
+        dateComponents1.day = 27
+        dateComponents1.hour = 8
+        dateComponents1.minute = 10
+
+        let testDate1 = Calendar.current.date(from: dateComponents1)
+
+        var dateComponents2 = DateComponents()
+        dateComponents2.year = 2019
+        dateComponents2.month = 7
+        dateComponents2.day = 28
+        dateComponents2.hour = 9
+        dateComponents2.minute = 30
+
+        let testDate2 = Calendar.current.date(from: dateComponents2)
+
+        // 25 hours and 20 minutes
+        let expectedRemainingStr = "25:20:0"
+        let timeRemainStr = DateUtilityManager().getTheRemainingTime(fromDate: testDate1!, toDate: testDate2!)
+        XCTAssertEqual(timeRemainStr, expectedRemainingStr)
     }
 
 }

@@ -22,6 +22,8 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     let selectedBlue = UIColor.init(red: 114.0/255.0, green: 174.0/255.0, blue: 218.0/255.0, alpha: 1.0)
     let unselectedGray = UIColor.init(red: 235.0/255.0, green: 235.0/255.0, blue: 235.0/255.0, alpha: 1.0)
 
+    let remainingDate = Date(timeIntervalSince1970: 1595275200000.0/1000.0)
+
     @IBOutlet weak var AEDButton: UIButton!
     @IBOutlet weak var INRButton: UIButton!
     @IBOutlet weak var productsCollection: UICollectionView!
@@ -79,7 +81,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     }
 
     @objc func updateRemainingTime() {
-        self.timerLabel.text = DateUtilityManager().getTheRemainingTime() + " Left"
+        self.timerLabel.text = DateUtilityManager().getTheRemainingTime(fromDate: Date(), toDate: remainingDate) + " Left"
     }
 
     @IBAction func INRTapped(_ sender: Any) {
