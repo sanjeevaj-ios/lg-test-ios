@@ -18,7 +18,12 @@ class ProductsManager {
     var products:[Product] = []
     var conversions: [Conversion] = []
     var productTitle = ""
-//    var productImageCache = Cache<String, UIImage>
+    let imageCache = NSCache<NSString, UIImage>()
+
+}
+
+enum ImageError: Error {
+    case parseError(String)
 }
 
 extension ProductsManager {
@@ -49,10 +54,14 @@ extension ProductsManager {
     }
 
     func getDefaultProductsViewModel() -> [ProductViewModel] {
+        return self.getProductViewModelArrayFor(conversionString: defaultCurrency)
+    }
+
+    func getProductViewModelArrayFor(conversionString: String) -> [ProductViewModel] {
         var productViewModels = [ProductViewModel]()
 
         for product in products {
-            let productViewModel = self.getProductViewModelFor(product: product, conversion: defaultCurrency)
+            let productViewModel = self.getProductViewModelFor(product: product, conversion: conversionString)
             productViewModels.append(productViewModel)
         }
 
@@ -63,23 +72,33 @@ extension ProductsManager {
 
         let name = product.name
         let displayPrice = ConversionManager.shared.convertRateFrom(from: product.currency, rate: product.price, to: conversion)
+        let modelDisplayPrice = conversion + " " + displayPrice
 
-        let productViewModel = ProductViewModel.init(productTitle: self.productTitle, name: name, displayPrice: displayPrice, imageURL: product.url)
+        let productViewModel = ProductViewModel.init(productTitle: self.productTitle, name: name, displayPrice: modelDisplayPrice, imageURL: product.url)
 
         return productViewModel
     }
 
     func getProductImageFor(product: ProductViewModel, imgCompletion:@escaping (UIImage?, Error?) -> Void) {
 
-        DataManager().getData(url: product.imageURL) { (data, error) in
-            if (error != nil) {
-                imgCompletion(nil, error)
-            } else {
-                if (data != nil) {
-                    let img = UIImage(data: data!)
-                    imgCompletion(img, nil)
+        if let cachedImage = imageCache.object(forKey: product.imageURL as NSString) {
+            imgCompletion(cachedImage, nil)
+        } else {
+            DataManager().getData(url: product.imageURL) { (data, error) in
+                if (error != nil) {
+                    imgCompletion(nil, error)
+                } else {
+
+                    if let data = data, let img = UIImage(data: data) {
+                        self.imageCache.setObject(img, forKey: product.imageURL as NSString)
+                        imgCompletion(img, nil)
+                    } else {
+                        imgCompletion(nil, ImageError.parseError("Cannot download from URL"))
+                    }
+
                 }
             }
         }
+
     }
 }

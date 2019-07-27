@@ -14,7 +14,7 @@ class DateUtilityManager {
     func getTheRemainingTime() -> String {
         let remainingDate = Date(timeIntervalSince1970: millisecondInterval/1000.0)
         let calendarDays = Calendar.current.dateComponents([.hour, .minute, .second], from: Date(), to: remainingDate)
-        return "\(calendarDays.hour ?? 0) : \(calendarDays.minute ?? 0) : \(calendarDays.second ?? 0)"
+        return "\(calendarDays.hour ?? 0):\(calendarDays.minute ?? 0):\(calendarDays.second ?? 0)"
     }
 }
 

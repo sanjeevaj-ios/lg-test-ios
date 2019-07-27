@@ -104,15 +104,23 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
             self.AEDButton.markAsOptionSelected()
             self.INRButton.markAsOptionUnselected()
             self.SARButton.markAsOptionUnselected()
+            self.modifyProductListingForCurrency(currency: "AED")
         case .INR:
             self.AEDButton.markAsOptionUnselected()
             self.INRButton.markAsOptionSelected()
             self.SARButton.markAsOptionUnselected()
+            self.modifyProductListingForCurrency(currency: "INR")
         case .SAR:
             self.AEDButton.markAsOptionUnselected()
             self.INRButton.markAsOptionUnselected()
             self.SARButton.markAsOptionSelected()
+            self.modifyProductListingForCurrency(currency: "SAR")
         }
+    }
+
+    func modifyProductListingForCurrency(currency: String) {
+        self.productsList = ProductsManager.shared.getProductViewModelArrayFor(conversionString: currency)
+        self.productsCollection.reloadData()
     }
 
     deinit {
