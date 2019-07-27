@@ -14,12 +14,21 @@ class LG_TestTests: XCTestCase {
         let fromCurrency = "AED"
         let toCurrency = "INR"
         let price = "2.0"
-        let expectedAnswer = "34.00"
-        let conversionObj = Conversion.init(from: "AED", to: "INR", rate: "17.1")
+        let expectedDirectConvesion = "34.00"
+        let conversionObj = Conversion.init(from: "AED", to: "INR", rate: "17.0")
         ConversionManager.shared.conversionArray = [conversionObj]
 
-        let testAnswer = ConversionManager.shared.convertRateFrom(from: fromCurrency, rate: price, to: toCurrency)
-        XCTAssertEqual(testAnswer, expectedAnswer)
+        let directConversionAnswer = ConversionManager.shared.convertRateFrom(from: fromCurrency, rate: price, to: toCurrency)
+        XCTAssertEqual(directConversionAnswer, expectedDirectConvesion)
+
+        let oppoFrom = "INR"
+        let oppoTo = "AED"
+        let oppPrice = "510.00"
+        let oppsiteExpected = "30.00"
+
+        let oppositeConversionAnswer = ConversionManager.shared.convertRateFrom(from: oppoFrom, rate: oppPrice, to: oppoTo)
+        XCTAssertEqual(oppositeConversionAnswer, oppsiteExpected)
+
     }
 
     func testDefaultProductViewModel() {
@@ -62,7 +71,7 @@ class LG_TestTests: XCTestCase {
         let testDate2 = Calendar.current.date(from: dateComponents2)
 
         // 25 hours and 20 minutes
-        let expectedRemainingStr = "25:20:0"
+        let expectedRemainingStr = "25:20:00"
         let timeRemainStr = DateUtilityManager().getTheRemainingTime(fromDate: testDate1!, toDate: testDate2!)
         XCTAssertEqual(timeRemainStr, expectedRemainingStr)
     }
